@@ -34,13 +34,44 @@
 
 // Get request processed the data
 
+// class Request {
+//     get(url){
+//         return new Promise((resolve,reject) => {        
+//         fetch(url)
+//         .then(response => response.json())
+//         .then(data => resolve(data))
+//         .catch(err => reject(err))
+//         })
+//     }
+// }
+// const request =new Request()
+// let albums;
+// request.get("https://jsonplaceholder.typicode.com/albums")
+// .then(data => {
+//     albums =data;
+//     console.log(albums)
+// })
+// .catch(err => console.log(err))
+
+// Get request with async 
 class Request {
-    get(url){
-        fetch(url)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-    }
+        async get(url){
+            const response = await fetch(url)
+            const data = response.json()
+            return data            
+        }
 }
-const request =new Request()
+
+const request = new Request();
+let albums;
 request.get("https://jsonplaceholder.typicode.com/albums")
+.then(data => {
+    albums =data;
+    console.log(albums)    
+})
+.catch(err => console.log(err))
+
+
+
+
+
