@@ -8,3 +8,12 @@ function fetchResponse (){
     .catch(err => console.log(err))
 }
 fetchResponse()
+
+// getting from JSON
+getJasonFile =() =>{
+    fetch("students.json")
+    .then(response => response.json())
+    .then(Jtext => console.log(Jtext))
+    .catch(err => console.log(err))
+}
+getJasonFile()
