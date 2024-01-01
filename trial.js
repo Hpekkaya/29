@@ -93,28 +93,47 @@
 // .then(newAlbum => console.log(newAlbum))
 // .catch(err => console.log(err))
 
-// Post request with async
-class Request{
-    async post(url,data){
-        const response = await fetch(url, {
-            method : "POST",
-            body :JSON.stringify(data),
-            headers :{
-                "Content-type" : "application/json; charset=UTF-8"
-            }
+// // Post request with async
+// class Request{
+//     async post(url,data){
+//         const response = await fetch(url, {
+//             method : "POST",
+//             body :JSON.stringify(data),
+//             headers :{
+//                 "Content-type" : "application/json; charset=UTF-8"
+//             }
+//         })
+//         const responseData = await response.json()
+//         return responseData
+//     }
+// }
+
+// const request = new Request()
+// request.post("https://jsonplaceholder.typicode.com/albums",{userId:2,name:"Hakan"})
+// .then(dataResponse => console.log(dataResponse))
+// .catch(err => console.log(err))
+
+// Put request --- Updating the current data
+class Request {
+    put(url,data){
+        return new Promise((resolve,reject) =>{
+            fetch(url, {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(err => reject(err))
         })
-        const responseData = await response.json()
-        return responseData
     }
 }
-
-const request = new Request()
-request.post("https://jsonplaceholder.typicode.com/albums",{userId:2,name:"Hakan"})
-.then(dataResponse => console.log(dataResponse))
+const request = new Request();
+request.put("https://jsonplaceholder.typicode.com/albums/8",{userId:5,title:"Thriller"})
+.then(newAlbum => console.log(newAlbum))
 .catch(err => console.log(err))
-
-
-
 
 
 
