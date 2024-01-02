@@ -24,21 +24,21 @@
 // .catch(err => console.log(err))
 
 // // Post request with async
-// class Request{
-//     async post(url,data){
-//         const response = await fetch(url, {
-//             method : "POST",
-//             body :JSON.stringify(data),
-//             headers :{
-//                 "Content-type" : "application/json; charset=UTF-8"
-//             }
-//         })
-//         const responseData = await response.json()
-//         return responseData
-//     }
-// }
+class Request{
+    async post(url,data){
+        const response = await fetch(url, {
+            method : "POST",
+            body :JSON.stringify(data),
+            headers :{
+                "Content-type" : "application/json; charset=UTF-8"
+            }
+        })
+        const responseData = await response.json()
+        return responseData
+    }
+}
 
-// const request = new Request()
-// request.post("https://jsonplaceholder.typicode.com/albums",{userId:2,name:"Hakan"})
-// .then(dataResponse => console.log(dataResponse))
-// .catch(err => console.log(err))
+const request = new Request()
+request.post("https://jsonplaceholder.typicode.com/albums",{userId:2,name:"Hakan"})
+.then(dataResponse => console.log(dataResponse))
+.catch(err => console.log(err))
