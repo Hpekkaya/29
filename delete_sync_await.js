@@ -10,3 +10,4 @@ const request = new Request();
 request.delete("https://jsonplaceholder.typicode.com/albums/8")
 .then(() => console.log("Deleting Process is succesful"))
 .catch(err => console.log(err))
+
